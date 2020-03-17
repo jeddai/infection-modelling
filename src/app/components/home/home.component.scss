@@ -25,55 +25,65 @@
 }
 
 .Home-body {
-
+  background-color: mat-color($primary);
+  color: #fff;
   display: flex;
-  flex-flow: wrap row;
+  flex-flow: nowrap row;
+}
 
-  .tile {
-    height: 50vh;
-    display: flex;
-    flex: auto auto;
-    flex-flow: nowrap column;
-    justify-content: space-evenly;
+.Home-list {
+  flex: 1 0;
 
-    .content-item {
-      flex: 0 0;
-      text-align: center;
+  @media(min-width: 600px) {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
 
-      h2 {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+  @media(max-width: 600px) {
+    width: 100vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
 
-    &.primary {
-      background-color: mat-color($primary);
+  mat-list-item {
+    div {
       color: #fff;
     }
 
-    &.accent {
-      background-color: mat-color($accent);
-      color: #000;
+    .Home-listHeader {
+      font-weight: bold;
+      word-wrap: break-word !important;
+      white-space: pre-wrap !important;
     }
 
-    &.full {
-      width: 100%;
+    &.pointer:hover {
+      background-color: mat-color($primary, 600);
     }
-
-    &.half {
-      @media(min-width: 600px) {
-        width: 50%;
-      }
-
-      @media(max-width: 600px) {
-        width: 100%;
-      }
-    }
-  }
-
-  .break {
-    flex-basis: 100%;
-    width: 0px;
   }
 }
 
+a {
+  color: #fff;
+}
+
+.Home-description {
+  flex: 1 0;
+  padding: 5px;
+
+  @media(min-width: 600px) {
+    width: 54vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+
+  @media(max-width: 600px) {
+    width: 94vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}

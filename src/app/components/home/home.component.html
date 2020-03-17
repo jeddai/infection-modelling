@@ -4,51 +4,27 @@
   </div>
 
   <div class="flex-container">
-    <p>number likely infected in {{ region }}</p>
+    <p>estimated number of infected in {{ region }}</p>
   </div>
 </div>
 
 <div class="Home-body">
-  <div class="tile full primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[0].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[1].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[2].content }"></ng-container>
-  </div>
-
-  <div class="tile full primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[3].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[4].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[5].content }"></ng-container>
-  </div>
-
-  <div class="tile full primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[6].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[7].content }"></ng-container>
-  </div>
-
-  <div class="tile half primary">
-    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[8].content }"></ng-container>
-  </div>
+  <mat-list class="Home-list">
+    <ng-container *ngFor="let contentItem of tiles">
+      <mat-list-item [class.pointer]="!!contentItem.description"
+      (click)="!!contentItem.description ? contentItem.active = !contentItem.active : ''">
+        <div class="Home-listHeader" mat-line>
+          {{ contentItem.header }}<span *ngIf="!!contentItem.description">*</span>
+        </div>
+        <div class="Home-listValue" mat-line> {{ contentItem.value }}</div>
+      </mat-list-item>
+      <div class="Home-description" *ngIf="contentItem.active">
+        <div [innerHTML]="getDescription(contentItem.description)"></div>
+        <ng-container *ngIf="!!contentItem.references">
+          <br/>
+          <p *ngFor="let reference of contentItem.references; let i = index"><small>{{ i + 1 }}: <a [href]="reference.link">{{ reference.name }}</a></small></p>
+        </ng-container>
+      </div>
+    </ng-container>
+  </mat-list>
 </div>
-
-<ng-template #contentItem let-content="content">
-  <div class="content-item" *ngFor="let contentItem of content">
-    <h1>{{ contentItem.header }}</h1>
-    <h2 [matTooltip]="contentItem.tooltip">{{ contentItem.value }}</h2>
-  </div>
-</ng-template>
