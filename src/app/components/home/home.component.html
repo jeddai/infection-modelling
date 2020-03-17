@@ -1,0 +1,54 @@
+<div class="Home-header">
+  <div class="flex-container">
+    <h1>{{ Math.floor(estimatedInfectedOnDate) | number:'.0' }}</h1>
+  </div>
+
+  <div class="flex-container">
+    <p>number likely infected in {{ region }}</p>
+  </div>
+</div>
+
+<div class="Home-body">
+  <div class="tile full primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[0].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[1].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[2].content }"></ng-container>
+  </div>
+
+  <div class="tile full primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[3].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[4].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[5].content }"></ng-container>
+  </div>
+
+  <div class="tile full primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[6].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[7].content }"></ng-container>
+  </div>
+
+  <div class="tile half primary">
+    <ng-container *ngTemplateOutlet="contentItem; context: { content: tiles[8].content }"></ng-container>
+  </div>
+</div>
+
+<ng-template #contentItem let-content="content">
+  <div class="content-item" *ngFor="let contentItem of content">
+    <h1>{{ contentItem.header }}</h1>
+    <h2 [matTooltip]="contentItem.tooltip">{{ contentItem.value }}</h2>
+  </div>
+</ng-template>

@@ -1,0 +1,79 @@
+@import '../../../styles';
+
+.Home-header {
+  height: 100vh;
+  color: #fff;
+  background-color: mat-color($primary);
+
+  .flex-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    h1  {
+      font-size: 10vw;
+      flex: 0 0;
+      height: 10vw;
+      margin-top: 40vh;
+    }
+
+    p {
+      text-align: center;
+      flex: 1 0;
+    }
+  }
+}
+
+.Home-body {
+
+  display: flex;
+  flex-flow: wrap row;
+
+  .tile {
+    height: 50vh;
+    display: flex;
+    flex: auto auto;
+    flex-flow: nowrap column;
+    justify-content: space-evenly;
+
+    .content-item {
+      flex: 0 0;
+      text-align: center;
+
+      h2 {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    &.primary {
+      background-color: mat-color($primary);
+      color: #fff;
+    }
+
+    &.accent {
+      background-color: mat-color($accent);
+      color: #000;
+    }
+
+    &.full {
+      width: 100%;
+    }
+
+    &.half {
+      @media(min-width: 600px) {
+        width: 50%;
+      }
+
+      @media(max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .break {
+    flex-basis: 100%;
+    width: 0px;
+  }
+}
+
