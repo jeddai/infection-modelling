@@ -212,6 +212,10 @@ export class HomeComponent implements OnInit {
 
     return resulting;
   }
+
+  scrollTo(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 interface Regions {

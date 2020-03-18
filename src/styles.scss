@@ -8,6 +8,8 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 $primary: map-get($app-theme, primary);
 $accent: map-get($app-theme, accent);
+$text-color: #fff;
+$link-color: $text-color;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { background-color: mat-color($primary); margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

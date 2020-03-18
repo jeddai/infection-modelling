@@ -4,7 +4,22 @@
   </div>
 
   <div class="flex-container">
-    <p>estimated number of infected in {{ region }}</p>
+    <p>Estimated number of infected in {{ region }}</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="flex-container">
+    <button mat-raised-button
+    (click)="scrollTo(rationale)">
+      See Rationale
+    </button>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="flex-container">
+    <p>Website donated by /u/jeddai</p>
   </div>
 </div>
 
@@ -27,4 +42,9 @@
       </div>
     </ng-container>
   </mat-list>
+</div>
+
+<div #rationale class="Home-info">
+  <h1>Rationale</h1>
+  <p>Lorem ipsum dolor sit amet</p>
 </div>
