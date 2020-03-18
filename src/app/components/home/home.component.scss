@@ -24,13 +24,49 @@
     }
   }
 
+  .horizontal-spacer {
+    margin-right: 20px;
+  }
+
   .spacer {
     margin-top: 20px;
   }
 }
 
+.Home-editor {
+  color: $text-color;
+  height: 50vh;
+
+  @media(min-width: 600px) {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+
+  @media(max-width: 600px) {
+    width: 94vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+
+  div.group {
+    div.group-items {
+      display: flex;
+      flex-flow: wrap row;
+
+      mat-form-field {
+        flex: 1 0;
+        width: 50%;
+      }
+    }
+  }
+
+  mat-divider {
+    margin-bottom: 20px;
+  }
+}
+
 .Home-body {
-  background-color: mat-color($primary);
   color: $text-color;
   display: flex;
   flex-flow: nowrap row;
@@ -98,7 +134,6 @@ a {
 }
 
 .Home-info {
-  background-color: mat-color($primary);
   color: $text-color;
   margin-top: 10px;
   min-height: 50vh;

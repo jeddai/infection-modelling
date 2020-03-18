@@ -10,9 +10,14 @@
   <div class="spacer"></div>
 
   <div class="flex-container">
-    <button mat-raised-button
+    <button mat-raised-button color="accent"
     (click)="scrollTo(rationale)">
       See Rationale
+    </button>
+    <div class="horizontal-spacer"></div>
+    <button mat-raised-button color="accent"
+    (click)="editing = !editing">
+      Edit Values
     </button>
   </div>
 
@@ -23,17 +28,97 @@
   </div>
 </div>
 
+<div class="Home-editor" *ngIf="editing" [formGroup]="form">
+  <div class="group">
+    <h1>Preset Values</h1>
+    <p>Modify these inputs to use pre-determined values based on historical information.</p>
+    <div class="group-items">
+      <mat-form-field class="primary" color="accent">
+        <mat-label>Region</mat-label>
+        <mat-select matNativeControl formControlName="region" name="region" (selectionChange)="initializeForm($event)">
+          <mat-option *ngFor="let possibleRegion of possibleRegions" [value]="possibleRegion">{{ possibleRegion }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="primary" color="accent">
+        <mat-label>Date</mat-label>
+        <mat-select matNativeControl formControlName="date" name="date" color="accent" (selectionChange)="initializeForm($event)">
+          <mat-option *ngFor="let possibleDate of possibleDates" [value]="possibleDate">{{ possibleDate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="group">
+    <h1>Individual Values</h1>
+    <p>Modify these values to simulate similar situations.</p>
+    <div class="group-items">
+      <mat-form-field color="accent">
+        <mat-label>Reported Confirmed Cases</mat-label>
+        <input matInput type="number" formControlName="reportedConfirmedCases">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Reported Fatalities</mat-label>
+        <input matInput type="number" formControlName="reportedFatalities">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Percent Detected by Medical Visit</mat-label>
+        <input matInput type="number" formControlName="percentDetectedByMedicalVisit" step=".01">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Percent Infected Per Medical Visits Tested</mat-label>
+        <input matInput type="number" formControlName="percentInfectedMedicalVisitsTested" step=".01">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Percent DInfected Seeking Medical Treatment</mat-label>
+        <input matInput type="number" formControlName="percentInfectedSeekingMedicalTreatment" step=".01">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Days from Infection to Onset of Symptoms</mat-label>
+        <input matInput type="number" formControlName="daysInfectionToOnset">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Days from Onset of Symptoms to Positive Diagnosis</mat-label>
+        <input matInput type="number" formControlName="daysOnsetToPositive">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Percent Daily Growth</mat-label>
+        <input matInput type="number" formControlName="percentDailyGrowth" step=".01">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Days from Onset to Death</mat-label>
+        <input matInput type="number" formControlName="daysOnsetToDeath">
+      </mat-form-field>
+
+      <mat-form-field color="accent">
+        <mat-label>Percent Infected Fatality</mat-label>
+        <input matInput type="number" formControlName="percentInfectedFatality" step=".0001">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
 <div class="Home-body">
   <mat-list class="Home-list">
-    <ng-container *ngFor="let contentItem of tiles">
+    <ng-container *ngFor="let contentItem of tiles; let i = index">
       <mat-list-item [class.pointer]="!!contentItem.description"
-      (click)="!!contentItem.description ? contentItem.active = !contentItem.active : ''">
+      (click)="!!contentItem.description ? open[i] = !open[i] : ''">
         <div class="Home-listHeader" mat-line>
           {{ contentItem.header }}<span *ngIf="!!contentItem.description">*</span>
         </div>
         <div class="Home-listValue" mat-line> {{ contentItem.value }}</div>
       </mat-list-item>
-      <div class="Home-description" *ngIf="contentItem.active">
+      <div class="Home-description" *ngIf="open[i]">
         <div [innerHTML]="getDescription(contentItem.description)"></div>
         <ng-container *ngIf="!!contentItem.references">
           <br/>
