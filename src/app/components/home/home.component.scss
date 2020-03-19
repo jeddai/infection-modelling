@@ -35,7 +35,7 @@
 
 .Home-editor {
   color: $text-color;
-  height: 50vh;
+  height: auto;
 
   @media(min-width: 600px) {
     width: 60vw;
@@ -56,7 +56,7 @@
 
       mat-form-field {
         flex: 1 0;
-        width: 50%;
+        flex-basis: 100%;
       }
     }
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from './../../../environments/environment';
 import { DecimalPipe, PercentPipe } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { ContentItem, Regions } from '../../models';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({
@@ -292,26 +292,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
   }
-}
-
-interface Regions {
-  [key: string]: Dates
-}
-
-interface Dates {
-  [key: string]: {
-    reportedConfirmedCases: number;
-    reportedFatalities: number;
-  }
-}
-
-interface ContentItem {
-  header: string,
-  value: any,
-  description?: string,
-  references?: {
-    name: string,
-    link: string
-  }[],
-  active?: boolean
 }

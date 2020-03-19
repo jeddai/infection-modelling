@@ -1,0 +1,114 @@
+@import '../../../styles';
+
+.Home-body {
+  color: $text-color;
+  display: flex;
+  flex-flow: nowrap row;
+}
+
+.Home-list {
+  flex: 1 0;
+  display: flex;
+  flex-flow: wrap row;
+
+  @media(min-width: 600px) {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+
+  @media(max-width: 600px) {
+    width: 100vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
+
+  >* {
+    flex: 1 0;
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+
+  .Home-listHeader {
+    font-weight: bold;
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    min-height: 55px;
+
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-items: center;
+
+    >* {
+      flex: 1 0;
+    }
+
+    .left {
+      vertical-align: center;
+    }
+
+    .right {
+      display: flex;
+      flex-flow: nowrap row;
+      justify-content: right;
+      vertical-align: center;
+
+      >* {
+        flex: 0 0;
+      }
+    }
+  }
+
+  .Home-listValue {
+    padding-left: 5px;
+  }
+
+  &.pointer:hover {
+    background-color: mat-color($primary, 600);
+  }
+}
+
+a {
+  color: $link-color;
+}
+
+.Home-description {
+  flex: 1 0;
+  padding: 5px;
+
+  @media(min-width: 600px) {
+    width: 54vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+
+  @media(max-width: 600px) {
+    width: 94vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.Home-info {
+  color: $text-color;
+  margin-top: 10px;
+  min-height: 50vh;
+  padding: 10px;
+
+  @media(min-width: 600px) {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+
+  @media(max-width: 600px) {
+    width: 100vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
+  }
+}

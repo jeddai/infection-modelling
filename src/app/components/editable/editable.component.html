@@ -1,0 +1,41 @@
+<div class="Home-body" [formGroup]="form">
+  <div class="Home-list">
+    <ng-container *ngFor="let contentItem of tiles | async; let i = index">
+      <div class="Home-listHeader">
+        <div class="left">
+          {{ contentItem.header }}:
+        </div>
+        <div class="right">
+          <ng-container *ngIf="!!contentItem.formItem; else view">
+            <div [ngSwitch]="contentItem.formItem.type">
+              <div *ngSwitchCase="'select'">
+                <mat-form-field color="accent">
+                  <mat-label>{{ contentItem.header }}</mat-label>
+                  <mat-select matNativeControl [formControlName]="contentItem.formItem.control" (selectionChange)="initializeForm($event)">
+                    <mat-option *ngFor="let option of contentItem.formItem.options" [value]="option">{{ option }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngSwitchCase="'number'">
+                <mat-form-field color="accent">
+                  <mat-label>{{ contentItem.formItem.label }}</mat-label>
+                  <input matInput type="number" [formControlName]="contentItem.formItem.control" [step]="contentItem.formItem.step">
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <ng-template #view>
+          {{ contentItem.value }}
+        </ng-template>
+
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="Home-info">
+  <h1>Rationale</h1>
+  <p>Lorem ipsum dolor sit amet</p>
+</div>

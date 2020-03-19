@@ -8,11 +8,13 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './components/home/home.component';
 import { DecimalPipe, PercentPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditableComponent } from './components/editable/editable.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    EditableComponent
   ],
   imports: [
     BrowserModule,
